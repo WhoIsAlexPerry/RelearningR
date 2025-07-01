@@ -1,0 +1,21 @@
+Steps to data science 
+
+- Importing (Take data and load it into a frame in R)
+- Tidying (storing it in a consistent form). Each column is a variable and each row is an observation.
+- Transform (narrowing in on observations of interest, creating new variables that are functions of existing ones,
+and calculating a set of summary statistics like counts or means)
+- Tidying + transforming = wrangling (getting data in a form that's natural to work with)
+
+Visualization and modeling are two main engines of knowledge generation. 
+
+Visualization: will show you things you didn't expect or raise new questions. 
+Models: mathematical or computational tools.
+
+Communication. 
+
+All the steps above get easier with programming. 
+
+---
+
+CRAN = comprehensive R archive network (to download R and keep it updated)
+RStudio = integrated development environment 
