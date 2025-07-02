@@ -231,3 +231,55 @@ ggplot(penguins, aes(x = species)) +
 
 ggplot(penguins, aes(x = fct_infreq(species))) + 
   geom_bar()
+
+#1.4.2 Numerical variables 
+#something is numerical when it can take on a wide range of numerical values.  they can
+#be continuous or discreet
+
+#here is a histogram 
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+#i can set the width of the intervals using the width argument. 
+
+#we can also use a density plot 
+#density plots are smoothed out versions of histograms, and a practical alternative
+# for continuous data that comes from an underlying smooth distribution
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_density()
+
+#1.4.3 Exercises
+#Make a bar plot of species of penguins, where you assign species to the y aesthetic. 
+#How is this plot different?
+
+ggplot(penguins, aes(y = species)) + geom_bar() +
+  labs(title = "Species of Penguin Counts", 
+       x = "Number of Penguins",
+       y = "Species")
+
+#It's flipped on its side. 
+  
+  #How are the following two plots different? Which aesthetic, color or fill, 
+#is more useful for changing the color of bars?
+  
+  ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")
+
+#the fill is better. using color just changes the outline of the bars. 
+
+#What does the bins argument in geom_histogram() do?
+
+#the bins argument changes the size of the variable x that's grouped in each category.
+  
+#Make a histogram of the carat variable in the diamonds dataset that 
+#is available when you load the tidyverse package. 
+#Experiment with different binwidths. 
+#What binwidth reveals the most interesting patterns?
+
+ggplot(diamonds, aes(x = carat)) + 
+  geom_histogram(binwidth = .1) 
+
+#.1
