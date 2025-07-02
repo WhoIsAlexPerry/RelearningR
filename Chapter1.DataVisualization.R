@@ -215,3 +215,19 @@ ggplot() +
   )
 
 #I was correct.
+
+#1.3 ggplot2 calls 
+#the first two arguments in ggplot are data and mapping.
+
+#1.4 Visualizing distributions
+
+#1.4.1 
+# A variable is categorical if it can only take a small set of values. You can use
+# a bar chart to show distribution of a categorical variable. 
+
+ggplot(penguins, aes(x = species)) + 
+  geom_bar()
+#we can change the order that they're displayed by making the variable a factor 
+
+ggplot(penguins, aes(x = fct_infreq(species))) + 
+  geom_bar()
