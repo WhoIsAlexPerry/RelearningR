@@ -1,0 +1,17 @@
+---
+title: "Whole game"
+author: "Alex Perry"
+date: "2026-02-04"
+output: html_document
+---
+
+Learning Outline:
+- Visualization 
+- Workflow: Basics
+- Data Transformation
+- Workflow: Code Style
+- Data tidying
+- Workflow: Script and projects
+- Data import
+- Workflow: Getting help
+
