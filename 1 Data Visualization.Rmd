@@ -27,3 +27,117 @@ library(palmerpenguins)
 Use the penguins data set to answer the questions in the textbook. 
 
 #1.2.1 The penguins data frame
+A data frame is a rectangular collection of variables (in columns) and observations (in rows). Variables are measurable features. Values are the state of the variable when you measure it. 
+
+Observations are the set of measurements made under similar conditions for one unit. 
+
+Tabular data: set of values, each associated with a variable and an observation. This is tidy if each value is placed in its own cell. 
+
+In the penguin context, a variable refers to an attribute of all the penguins. An observations refers to all the attributes of a single penguin. 
+
+```{r}
+penguins
+glimpse(penguins)
+View(penguins)
+```
+Among the variables are species, flipper length, body mass. 
+
+#1.2.2 Ultimate Goal 
+Recreate a visualization from the textbook. 
+
+#1.2.3 Creating a ggplot
+
+With ggplot, beging with the function ggplot(). This defines a plot object to add layers to. The first argument of the plot is the dataset. i.e. ggplot(data = penguins)
+
+```{r}
+ggplot(data = penguins)
+```
+Next, we need to deal with the mapping argument. This defines how variables in the plot are mapped to visual properties (aesthetics)
+
+Mapping is always defined by the aesthetics argument, aes(). The X and Y arguments specify which variables to map to which axes. 
+
+Below, we'll map flipper length to x and body mass to y. 
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_len, 
+                y = body_mass))
+```
+Canvas now has structure, but we haven't articulated how to represent the observations on the plot. 
+
+Now, we need a GEOM. Geometrical object that a plot uses to represent data. THese functions start with geom_. 
+
+Here, we describe the type of geom that the plot uses. Bar charts are geom_bar(), line charts use geom_line(), boxplots use geom_boxplot() and scatterplots use geom_point(). 
+
+The function geom_point() adds a layer of points that create a scatterplot. 
+
+```{r}
+ggplot(
+  data = penguins, 
+  mapping = aes(
+    x = flipper_len,
+    y = body_mass
+  )
+) +
+  geom_point()
+```
+As flipper length increases, body mass does as well. The trend is also linear and strong.  The warning message showed up because two values were missing. 
+
+#1.2.4 Adding aesthetics and layers 
+We should ask if this trend different by species. 
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_len, y = body_mass, color = species)
+) +
+  geom_point()
+```
+Scaling is the automatic process ggplot2 uses to map a nique value of the aesthetic. The program will also add a legend. Also, add a layer displaying a smooth curve depicting the relationship between body mass and flipper length. 
+
+To do this, we will add a new geom as a layer on top of the points geom called geom_smooth(). The linear model fit we'll use is called method = "lm". 
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_len,
+                y = body_mass,
+                color = species)
+) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+This is wrong because we want the Loess line at the global level, not local level. 
+If we want them to share the line, we should specify the color mapping under the points part. 
+
+```{r}
+ggplot(
+  data = penguins, 
+  mapping = aes(x = flipper_len,
+                y = body_mass)
+) +
+  geom_point(mapping = aes(color = species)) +
+  geom_smooth(method = "lm")
+```
+Now, we should add labels using the labs() argument. Title, subtitle fall into this category. x is the x-axis label, y is the y-axis label, and color and shape define the label for the legend. In addition, we can improve the color palette to be colorblind safe with the scale_color_colorblind() 
+
+
+```{r}
+ggplot(
+  data = penguins, 
+  mapping = aes(
+    x = flipper_len,
+    y = body_mass
+  )
+) +
+  geom_point(aes(color = species, shape = species)) +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Body mass and flipper length",
+    subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins", x = "Flipper length (mm)", y = "Body mass (g)",
+    color = "Species", shape = "Species"
+  ) 
+```
+The colorblind function doesn't work.
+
+#1.2.5 Exercises
