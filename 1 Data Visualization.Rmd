@@ -1,0 +1,29 @@
+---
+title: "Chap 1 - Data Visualization"
+author: "Alex Perry"
+date: "2026-02-04"
+output: html_document
+---
+
+#1.1 Introduction
+
+GGPlot - grammar of graphics, will use ggplot2 in this textbook. 
+
+#1.1.1 Prerequisites
+
+```{r}
+library(tidyverse)
+```
+
+This contains packages used in data analysis. Need to load each time I start a new session. 
+
+For data, we'll use the Palmer Penguins package, which contains body measurements for penguins on three islands and the ggthemes package (colorblind safe)
+
+```{r}
+library(palmerpenguins)
+```
+
+#1.2 First steps
+Use the penguins data set to answer the questions in the textbook. 
+
+#1.2.1 The penguins data frame
