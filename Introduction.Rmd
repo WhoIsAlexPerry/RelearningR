@@ -1,0 +1,29 @@
+---
+title: "Introduction"
+author: "Alex Perry"
+date: "2026-02-04"
+output: html_document
+---
+What You Will Learn
+- Importing data (taking it from where it's stored)
+- Tidying (storing it in a consistent form. columns are variables, row are observations)
+- Transforming (narrowing into one set, creating new variables, calculating summary statistics)
+- Tidying + Transforming = Wrangling
+- Visualizing (self-explanatory)
+- Models (predictors)
+- Communication
+- Programming (can simplify things)
+
+Have to download Tidyverse - a set of packages. 
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+
+install.packages(
+  c("arrow", "babynames", "curl", "duckdb", "gapminder", 
+    "ggrepel", "ggridges", "ggthemes", "hexbin", "janitor", "Lahman", 
+    "leaflet", "maps", "nycflights13", "openxlsx", "palmerpenguins", 
+    "repurrrsive", "tidymodels", "writexl")
+  )
+```
