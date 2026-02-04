@@ -141,3 +141,32 @@ ggplot(
 The colorblind function doesn't work.
 
 #1.2.5 Exercises
+
+1. How many rows are in penguins? How many columns?
+
+```{r}
+glimpse(penguins)
+```
+344 rows, 8 columns. 
+
+2. What does the bill_depth_mm variable in the penguins data frame describe? Read the help for ?penguins to find out.
+
+```{r}
+help(penguins)
+```
+A number denoting bill depth (millimeters)
+
+
+3. Make a scatterplot of bill_depth_mm vs. bill_length_mm. That is, make a scatterplot with bill_depth_mm on the y-axis and bill_length_mm on the x-axis. Describe the relationship between these two variables.
+
+```{r}
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     y = bill_depth_mm)) + geom_point()
+```
+There are two clusters of data on the graph. There's no linear relationship. 
+
+
+
+
+
