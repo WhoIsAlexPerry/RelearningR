@@ -306,4 +306,29 @@ ggplot(
   ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point()
 
+Later on, we'll learn about piping, another form of notation. 
 
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point() 
+  
+  can be 
+  
+  penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+  
+#1.4 Visualizing Distributions
+
+Categorical Variable - Bar charts with a number (count) on the y axis. And a discrete variable on the x axis. 
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar()
+  
+  by using 
+  
+  ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()
+  
+  we order it from highest to lowest. 
+  
+  
